@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="GiftsApp:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/GiftsApp_jar</output-path>
+    <root id="archive" name="GiftsApp.jar">
+      <element id="module-output" name="GiftsApp" />
+    </root>
+  </artifact>
+</component>

@@ -13,5 +13,6 @@ public class Dashboard extends JFrame {
     this.setSize(300,300);
     this.setLocationRelativeTo(null);
     this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+
   }
 }
