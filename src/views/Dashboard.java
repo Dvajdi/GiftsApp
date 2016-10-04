@@ -1,6 +1,6 @@
 package views;
 
-import controllers.PaintClick;
+import controllers.DrawPanelController;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,16 +10,26 @@ public class Dashboard extends JFrame {
     super(title);
     this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     this.setVisible(true);
-    this.setSize(300,300);
+    this.setSize(500,500);
     this.setLocationRelativeTo(null);
-    this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+    //this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 
     DrawPanel dp = new DrawPanel();
-    this.getContentPane().add(BorderLayout.CENTER,dp);
-
     JButton btnRepaint = new JButton("Перерисовать");
-    btnRepaint.addActionListener(new PaintClick(dp));
-    this.getContentPane().add(BorderLayout.SOUTH,btnRepaint);
+
+    BorderLayout bl = new BorderLayout();
+
+    bl.addLayoutComponent(BorderLayout.CENTER,dp);
+    bl.addLayoutComponent(BorderLayout.WEST,btnRepaint);
+
+    this.getContentPane().setLayout(bl);
+
+
+
+    this.getContentPane().add(BorderLayout.EAST,btnRepaint);
+
+    btnRepaint.addActionListener(new DrawPanelController(dp,10));
+
 
   }
 }
