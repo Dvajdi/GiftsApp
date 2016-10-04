@@ -17,8 +17,14 @@ public class DrawPanel extends JPanel {
     Graphics2D graphics2D = (Graphics2D)g;
     graphics2D.draw3DRect(150,150,100,100,true);
 
-    GradientPaint gd = new GradientPaint(300,300,Color.blue,600,600,Color.ORANGE);
+    Color first = new Color(newRandom255(),newRandom255(),newRandom255());
+    Color second = new Color(newRandom255(),newRandom255(),newRandom255());
+    GradientPaint gd = new GradientPaint(300,300,first,600,600,second);
     graphics2D.setPaint(gd);
     graphics2D.fillOval(300,300,300,300);
+  }
+
+  int newRandom255(){
+    return (int) (Math.random()*255);
   }
 }
