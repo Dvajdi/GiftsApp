@@ -15,16 +15,14 @@ public class DrawPanelController implements ActionListener {
     this.id = id;
     this.drawPanel = drawPanel;
 
-    AnimationThread at = new AnimationThread(dx,dy);
-    at.run();
+    new AnimationThread(dx,dy);
+
   }
 
   @Override
   public void actionPerformed(ActionEvent e) {
-    if(id == 10){
-      System.out.println("привет");
-    }
-    drawPanel.repaint();
+
+    drawPanel.reloadColors();
   }
 
   void setXandY(int x,int y){
@@ -44,14 +42,38 @@ public class DrawPanelController implements ActionListener {
 
     @Override
     public void run() {
-      for (int i = 0; i <100 ; i++) {
-        x+=1;
-        y+=1;
+      int i=0;
+      int d =500;
+      int arrow=1;
+      try{
+      while(true) {
+        if(i<d){d=500; i++;}else{d=0;if(i>d){i--;}else{d=500;arrow=(int)(Math.random()*4);}}
+        if(arrow%4==0){
+          x=i;
+          y=-i;
+        }else{
+          if(arrow%3==0){
+            x=-i;
+            y=i;
+          }else{
+            if(arrow%2==0){
+              x=-i;
+              y=-i;
+            }else{
+              x=i;
+              y=i;
+            }
+          }
+
+        }
+
+
         setXandY(x,y);
+        Thread.sleep(15);
         drawPanel.repaint();
-        try{
-        Thread.sleep(50);}catch(InterruptedException e){}
+
       }
+      }catch(InterruptedException e){}
     }
   }
 }

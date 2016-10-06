@@ -14,13 +14,15 @@ public class Dashboard extends JFrame {
     this.setLocationRelativeTo(null);
     //this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 
+    JButton btnRepaint = new JButton("Перерисовать");
+    btnRepaint.setSize(100,200);
+    this.getContentPane().add(BorderLayout.EAST,btnRepaint);
 
     DrawPanel dp = new DrawPanel();
-    this.getContentPane().add(BorderLayout.WEST,dp);
+    this.getContentPane().add(BorderLayout.CENTER,dp);
     DrawPanelController dpc = new DrawPanelController(dp,10);
 
-    JButton btnRepaint = new JButton("Перерисовать");
-    this.getContentPane().add(BorderLayout.EAST,btnRepaint);
+
 
     btnRepaint.addActionListener(dpc);
 
